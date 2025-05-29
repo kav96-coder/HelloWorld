@@ -1,5 +1,5 @@
 # Use official Maven image to build the app
-FROM maven:3.9.5-eclipse-temurin-17 AS build
+FROM eclipse-temurin:17-jdk AS build
 WORKDIR /app
 
 # Copy project files
