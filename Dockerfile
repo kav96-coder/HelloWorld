@@ -1,5 +1,5 @@
 # Use official Maven image to build the app
-FROM maven:3.8.6-openjdk-17 AS build
+FROM maven:3.9.4-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
@@ -10,9 +10,8 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
-# Use a smaller JRE image to run the app
-FROM openjdk:17-jdk-slim
-
+# Use a smaller JDK image to run the app
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 # Copy the jar from the build stage
