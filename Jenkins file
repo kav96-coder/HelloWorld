@@ -64,9 +64,9 @@ pipeline {
                 withCredentials([file(credentialsId: 'Kubeconfig', variable: 'KUBECONFIG_FILE')]) {
                     sh '''
                     export KUBECONFIG=$KUBECONFIG_FILE
-                    kubectl set image deployment/helloworld helloworld=${DOCKER_IMAGE}:${IMAGE_TAG} --record || \
                     kubectl apply -f kubernetes/deployment.yaml
                     kubectl rollout status deployment/helloworld
+                    kubectl set image deployment/helloworld helloworld=kbhara/helloworld-app:22
                     '''
                 }
             }
