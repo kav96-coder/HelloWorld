@@ -66,7 +66,7 @@ pipeline {
                     export KUBECONFIG=$KUBECONFIG_FILE
                     kubectl apply -f kubernetes/deployment.yaml
                     kubectl rollout status deployment/helloworld
-                    kubectl set image deployment/helloworld helloworld=kbhara/helloworld-app:22
+                    kubectl set image deployment/helloworld helloworld=kbhara/helloworld:22
                     '''
                 }
             }
