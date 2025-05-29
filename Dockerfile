@@ -1,5 +1,6 @@
 # Use official Maven image to build the app
-FROM eclipse-temurin:17-jdk-slim AS build
+FROM eclipse-temurin:17-jdk@sha256:<digest> AS build
+
 WORKDIR /app
 
 # Copy project files
