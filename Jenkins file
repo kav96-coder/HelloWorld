@@ -64,12 +64,13 @@ pipeline {
                 withCredentials([file(credentialsId: 'Kubeconfig', variable: 'KUBECONFIG_FILE')]) {
                     sh '''
                     export KUBECONFIG=$KUBECONFIG_FILE
-                    kubectl apply -f kubernetes/Deployment.yaml
-                    kubectl apply -f kubernetes/service.yaml
-                    kubectl apply -f kubernetes/secret.yaml
-                    kubectl apply -f kubernetes/configmap.yaml
+                    cd kubernetes
+                    kubectl apply -f Deployment.yaml
+                    kubectl apply -f service.yaml
+                    kubectl apply -f secret.yaml
+                    kubectl apply -f configmap.yaml
                     kubectl rollout status deployment/helloworld
-                    kubectl set image deployment/helloworld helloworld=kbhara/helloworld:22
+                    kubectl set image deployment/helloworld helloworld=kbhara/helloworld-app:22
                     '''
                 }
             }
